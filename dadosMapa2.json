@@ -1,0 +1,690 @@
+[
+  {
+    "cidade": "VIDEIRA",
+    "estado": "Santa Catarina",
+    "lat": "-27.0054400",
+    "lon": "-51.1533733",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "FREDERICO WESTPHALEN",
+    "estado": "Rio Grande do Sul",
+    "lat": "-27.3571100",
+    "lon": "-53.3964117",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "PACO DO LUMIAR",
+    "estado": "Maranhão",
+    "lat": "-2.5329055",
+    "lon": "-44.1591965",
+    "transportadoras": [
+      "Best Log",
+      "Transportes Biano",
+      "J.A Transportes",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "CAMPINAS",
+    "estado": "São Paulo",
+    "lat": "-22.9056391",
+    "lon": "-47.0595640",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "J.A Transportes",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "TOLEDO",
+    "estado": "Paraná",
+    "lat": "-24.7222438",
+    "lon": "-53.7402476",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "J.A Transportes",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "RIACHO DAS ALMAS",
+    "estado": "Pernambuco",
+    "lat": "-8.1356327",
+    "lon": "-35.8566421",
+    "transportadoras": [
+      "Best Log",
+      "Transportes Biano",
+      "Modular",
+      "J.A Transportes",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "SALGADO",
+    "estado": "Sergipe",
+    "lat": "-11.0282445",
+    "lon": "-37.4782803",
+    "transportadoras": [
+      "Transportes Biano",
+      "J.A Transportes",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "ANTONIO PRADO",
+    "estado": "Rio Grande do Sul",
+    "lat": "-28.8567806",
+    "lon": "-51.2801355",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "CURITIBA",
+    "estado": "Paraná",
+    "lat": "-25.4295963",
+    "lon": "-49.2712724",
+    "transportadoras": [
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "CAMBE",
+    "estado": "Paraná",
+    "lat": "-23.2782035",
+    "lon": "-51.2779583",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "TEUTONIA",
+    "estado": "Rio Grande do Sul",
+    "lat": "-29.4816568",
+    "lon": "-51.8137520",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Modular",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "MARINGÁ",
+    "estado": "Paraná",
+    "lat": "-23.4252690",
+    "lon": "-51.9382078",
+    "transportadoras": [
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "sete lagoas",
+    "estado": "Minas Gerais",
+    "lat": "-19.4661110",
+    "lon": "-44.2469440",
+    "transportadoras": [
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "FLORESTAL",
+    "estado": "Minas Gerais",
+    "lat": "-19.8878705",
+    "lon": "-44.4314766",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "PEQUI",
+    "estado": "Minas Gerais",
+    "lat": "-19.6315163",
+    "lon": "-44.6597262",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "MONTES CLAROS",
+    "estado": "Minas Gerais",
+    "lat": "-16.7495727",
+    "lon": "-43.8687268",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "J.A Transportes",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "Florianópolis",
+    "estado": "Santa Catarina",
+    "lat": "-27.5973002",
+    "lon": "-48.5496098",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "ELIAS FAUSTO",
+    "estado": "São Paulo",
+    "lat": "-23.0416538",
+    "lon": "-47.3718002",
+    "transportadoras": [
+      "Best Log",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "RESSAQUINHA",
+    "estado": "Minas Gerais",
+    "lat": "-21.0630560",
+    "lon": "-43.7627780",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "PITANGUI",
+    "estado": "Minas Gerais",
+    "lat": "-19.6822230",
+    "lon": "-44.8905550",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "J.A Transportes",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SÃO CAETANO DO SUL",
+    "estado": "São Paulo",
+    "lat": "-23.6195923",
+    "lon": "-46.5688323",
+    "transportadoras": [
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "CONCEIÇÃO DO PARÁ",
+    "estado": "Minas Gerais",
+    "lat": "-19.7522220",
+    "lon": "-44.8969440",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SÃO JOSE DA VARGINHA",
+    "estado": "Minas Gerais",
+    "lat": "-19.7087286",
+    "lon": "-44.5577812",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SAO PEDRO DOS FERROS",
+    "estado": "Minas Gerais",
+    "lat": "-20.1706687",
+    "lon": "-42.5229010",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "ITAPECERICA",
+    "estado": "Minas Gerais",
+    "lat": "-20.4727780",
+    "lon": "-45.1255560",
+    "transportadoras": [
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SAO GONCALO DO PARA",
+    "estado": "Minas Gerais",
+    "lat": "-19.9827780",
+    "lon": "-44.8591670",
+    "transportadoras": [
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "URUCANIA",
+    "estado": "Minas Gerais",
+    "lat": "-20.3508330",
+    "lon": "-42.7394440",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "RIO CLARO",
+    "estado": "São Paulo",
+    "lat": "-22.4100108",
+    "lon": "-47.5603933",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "NIMEC"
+    ]
+  },
+  {
+    "cidade": "CAMPINA GRANDE",
+    "estado": "Paraíba",
+    "lat": "-7.2246743",
+    "lon": "-35.8771292",
+    "transportadoras": [
+      "Best Log",
+      "Transportes Biano",
+      "Modular",
+      "TransColina",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "SAO BENTO DO UNA",
+    "estado": "Pernambuco",
+    "lat": "-8.5196562",
+    "lon": "-36.4454372",
+    "transportadoras": [
+      "Best Log",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "SANTA ISABEL DO PARA",
+    "estado": "Pará",
+    "lat": "-1.2968557",
+    "lon": "-48.1605533",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Transportes Biano",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "CACOAL",
+    "estado": "Rondônia",
+    "lat": "-11.4333000",
+    "lon": "-61.4420502",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Transportes Biano",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "PASSOS",
+    "estado": "Minas Gerais",
+    "lat": "-20.7167803",
+    "lon": "-46.6156864",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "FEIRA DE SANTANA",
+    "estado": "Bahia",
+    "lat": "-12.2578934",
+    "lon": "-38.9598047",
+    "transportadoras": [
+      "Best Log",
+      "Transportes Biano",
+      "J.A Transportes",
+      "Doma"
+    ]
+  },
+  {
+    "cidade": "FARROUPILHA",
+    "estado": "Rio Grande do Sul",
+    "lat": "-29.2264700",
+    "lon": "-51.3468188",
+    "transportadoras": [
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SANTA CRUZ DE MONTE CASTELO",
+    "estado": "Paraná",
+    "lat": "-22.9582028",
+    "lon": "-53.2948590",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "PELOTAS",
+    "estado": "Rio Grande do Sul",
+    "lat": "-31.7699736",
+    "lon": "-52.3410161",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC"
+    ]
+  },
+  {
+    "cidade": "SAO SEBASTIAO DO OESTE",
+    "estado": "Minas Gerais",
+    "lat": "-20.2747230",
+    "lon": "-45.0036110",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "PATOS DE MINAS",
+    "estado": "Minas Gerais",
+    "lat": "-18.6041453",
+    "lon": "-46.5096698",
+    "transportadoras": [
+      "TransColina",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SAO JOAO DA BOA VISTA",
+    "estado": "São Paulo",
+    "lat": "-21.9687099",
+    "lon": "-46.7969216",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "COSMOPOLIS",
+    "estado": "São Paulo",
+    "lat": "-22.6437398",
+    "lon": "-47.1972086",
+    "transportadoras": [
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SAO CARLOS",
+    "estado": "São Paulo",
+    "lat": "-21.8788022",
+    "lon": "-47.8567619",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "J.A Transportes",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "INDAIATUBA",
+    "estado": "São Paulo",
+    "lat": "-23.0908356",
+    "lon": "-47.2180677",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "J.A Transportes",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "CARAMBEI",
+    "estado": "Paraná",
+    "lat": "-24.9513298",
+    "lon": "-50.1171293",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "COLOMBO",
+    "estado": "Paraná",
+    "lat": "-25.2925439",
+    "lon": "-49.2243472",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "CASTRO",
+    "estado": "Paraná",
+    "lat": "-24.7940720",
+    "lon": "-49.9972914",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Bombonatto",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "NEPOMUCENO",
+    "estado": "Minas Gerais",
+    "lat": "-21.2327440",
+    "lon": "-45.2352276",
+    "transportadoras": [
+      "Best Log",
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "MARAVILHA",
+    "estado": "Santa Catarina",
+    "lat": "-26.7623898",
+    "lon": "-53.1747387",
+    "transportadoras": [
+      "Mira",
+      "Best Log",
+      "Alfa",
+      "Expresso São Miguel",
+      "Aceville",
+      "Doma",
+      "NIMEC",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "NOVA SERRANA",
+    "estado": "Minas Gerais",
+    "lat": "-19.8758340",
+    "lon": "-44.9841660",
+    "transportadoras": [
+      "Alfa",
+      "Aceville",
+      "Doma",
+      "RGR Log"
+    ]
+  },
+  {
+    "cidade": "SORRISO",
+    "estado": "Mato grosso",
+    "lat": "-12.5444887",
+    "lon": "-55.7233972",
+    "transportadoras": [
+      "Doma",
+      "Mandala",
+      "Manilog",
+      "Fieza Cargas"
+    ]
+  },
+  {
+    "cidade": "FORTALEZA",
+    "estado": "CEARA",
+    "lat": "-3.7304512",
+    "lon": "-38.5217989",
+    "transportadoras": [
+      "Doma",
+      "Transportes Biano",
+      "TransColina",
+      "Modular"
+    ]
+  }
+]

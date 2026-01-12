@@ -1,0 +1,32 @@
+[
+  {
+    "EMPRESA": "Udlog Armazens Gerais Transporte e Logistica",
+    "APELIDO": "UD LOG",
+    "ENDERECO": "AV PAPA JOAO XXIII, 2479, INDUSTRIAL CORAL",
+    "NUMERO": 2479,
+    "CEP": "09370-800",
+    "REGIAO": "MAUA - SP",
+    "LATITUDE": "-23.6687",
+    "LONGITUDE": "-46.4614"
+  },
+  {
+    "EMPRESA": "VENDEMMIA",
+    "APELIDO": "NEST",
+    "ENDERECO": "Rod. Ingo Hering, 4669 - Volta Grande, Navegantes - SC",
+    "NUMERO": 4669,
+    "CEP": "88371-890",
+    "REGIAO": "NAVEGANTES - SC",
+    "LATITUDE": "-26.8788",
+    "LONGITUDE": "-48.6796"
+  },
+  {
+    "EMPRESA": "Akdeniz Chemson",
+    "APELIDO": "CHEMSON",
+    "ENDERECO": "Av. Brasil, 4633 - Distrito Industrial, Rio Claro - SP",
+    "NUMERO": 4633,
+    "CEP": "13505-600",
+    "REGIAO": "RIO CLARO - SP",
+    "LATITUDE": "-22.4344",
+    "LONGITUDE": "-47.5762"
+  }
+]
