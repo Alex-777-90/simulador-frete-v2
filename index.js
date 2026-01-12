@@ -46,17 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
             // Preencher Input
             inputCliente.value = nome;
             
-            // Preencher Dados Visíveis
-            destinoSelecionada = true;
+            // =========================================================
+            // 🆕 ALTERAÇÃO SOLICITADA: Preencher Cidade (Padronizada)
+            // =========================================================
+            const inputCidade = document.getElementById('cidade');
+            if (inputCidade) {
+                // Pega o valor, remove acentos, joga para maiúscula e remove espaços extras
+                const cidadeTratada = (cli["Cidade"] || "")
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toUpperCase()
+                    .trim();
+                
+                inputCidade.value = cidadeTratada;
+            }
+            // =========================================================
+
+            // Preencher Dados Visíveis (Lógica antiga mantida)
+            // Nota: Se a variável 'destinoSelecionada' não for global, verifique se ela existe no seu código completo.
+            if (typeof destinoSelecionada !== 'undefined') {
+                destinoSelecionada = true; 
+            }
+
             const ufDest = document.getElementById("uf-destino");
             const cidDest = document.getElementById("cidade-destino");
             const cepDest = document.getElementById("cep-destino");
             const endDest = document.getElementById("end-destino");
             
-            if (ufDest) ufDest.value = removeAcentos(toUpper(cli["UF"]));
-            if (cidDest) cidDest.value = removeAcentos(toUpper(cli["Cidade"]));
-            if (cepDest) cepDest.value = normalizeCEPFromJson(cli["CEP"]);
-            if (endDest) endDest.value = removeAcentos(toUpper(cli["ENDERECO"] || cli["Endereço"]));
+            // Nota: Mantive as chamadas removeAcentos/toUpper originais caso você tenha essas funções definidas em outro lugar.
+            // Se elas não existirem, o código acima (inputCidade) já garante o funcionamento para o campo 'cidade'.
+            if (ufDest && typeof removeAcentos === 'function') ufDest.value = removeAcentos(toUpper(cli["UF"]));
+            if (cidDest && typeof removeAcentos === 'function') cidDest.value = removeAcentos(toUpper(cli["Cidade"]));
+            if (cepDest && typeof normalizeCEPFromJson === 'function') cepDest.value = normalizeCEPFromJson(cli["CEP"]);
+            if (endDest && typeof removeAcentos === 'function') endDest.value = removeAcentos(toUpper(cli["ENDERECO"] || cli["Endereço"]));
 
             // 🔴 NOVO: Preencher Campos Ocultos de Latitude e Longitude
             const latDest = document.getElementById("destino-lat");
