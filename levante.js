@@ -1,4 +1,7 @@
-// levante.js COMPLETO - FRACIONADO + DEDICADO (LOTACAO)
+// =====================================================================
+// ARQUIVO: levante.js (COMPLETO)
+// FUNÇÃO: Realizar os cálculos específicos da Levante e devolver os dados
+// =====================================================================
 
 // ================== CONSTANTES GERAIS ==================
 
@@ -85,7 +88,7 @@ const TARIFA_POR_ROTA = {
 };
 
 // ================== TABELA DEDICADO (LOTACAO) ==================
-// Dados específicos de origem/destino. Se não achar aqui, usamos fallback por rota.
+// Dados específicos de origem/destino. 
 
 const DEDICADO_ROTAS = [
   {
@@ -422,9 +425,10 @@ const VEICULOS_FAIXAS = [
   { tipo: "f1000",  minKg: 0,     eixos: 2 }
 ];
 
-// ================== FUNÇÕES AUXILIARES ==================
 
-function normalizarTexto(str) {
+// ================== FUNÇÕES AUXILIARES INTERNAS ==================
+
+function normalizarTextoLevante(str) {
   if (!str) return "";
   return str
     .normalize("NFD")
@@ -434,33 +438,19 @@ function normalizarTexto(str) {
     .trim();
 }
 
-function formatBRL(valor) {
-  return valor.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
-}
-
-// converte "18.402,42" -> 18402.42
-function parseValorBR(valor) {
-  if (!valor) return 0;
-  valor = valor.replace(/\./g, "");
-  valor = valor.replace(",", ".");
-  const n = parseFloat(valor);
-  return isNaN(n) ? 0 : n;
-}
-
 function descobrirRotaFracionado(cidadeDestino) {
-  const nome = normalizarTexto(cidadeDestino);
+  const nome = normalizarTextoLevante(cidadeDestino);
   if (ROTA_I.includes(nome)) return "I";
   if (ROTA_II.includes(nome)) return "II";
-  // Forma 1: se não achar, considerar ROTA II por padrão
-  return "II";
+  // Forma 1: se não achar, considerar null (não atende) ou II por padrão.
+  // Neste módulo, se não achar, assumiremos que não atende a não ser que tenha rota dedicada específica.
+  return null;
 }
 
+// Reintegrando a função de busca dedicada original
 function encontrarRotaDedicado(origemCidade, origemUF, destinoCidade, destinoUF) {
-  const oCidade = normalizarTexto(origemCidade);
-  const dCidade = normalizarTexto(destinoCidade);
+  const oCidade = normalizarTextoLevante(origemCidade);
+  const dCidade = normalizarTextoLevante(destinoCidade);
   const oUF = (origemUF || "").toUpperCase();
   const dUF = (destinoUF || "").toUpperCase();
 
@@ -492,228 +482,102 @@ function escolherVeiculoPorPeso(pesoKg, rotaObj) {
   return null;
 }
 
-// ================== CÁLCULO FRACIONADO ==================
-
-function calcularFracionado(params, container) {
-  const valorNF = parseValorBR(params.get("valor_nf"));
-  const pesoKg = parseFloat(params.get("peso") || "0");
-  const cidadeDestino = params.get("cidade_destino") || "";
-  const ufDestino = (params.get("uf_destino") || "").toUpperCase();
-
-  const rota = descobrirRotaFracionado(cidadeDestino);
-
-  const tarifaTon = TARIFA_POR_ROTA[rota];
-
-  const pesoFaturadoKg = Math.max(pesoKg, PESO_MIN_KG);
-  const pesoTon = pesoFaturadoKg / 1000;
-
-  const fretePeso = pesoTon * tarifaTon;
-  const freteValor = valorNF * AD_VALOREM_FRAC;
-  const despacho = TAXA_DESPACHO;
-
-  const subtotal = fretePeso + freteValor + despacho;
-
-  // ICMS "por dentro"
-  const totalComICMS = subtotal / (1 - ALIQUOTA_ICMS);
-  const icms = totalComICMS - subtotal;
-
-  container.innerHTML = `
-    <h2>Resultado da Simulação - Levante (J&amp;J) - Fracionado</h2>
-
-    <h3>Dados principais</h3>
-    <ul>
-      <li><strong>Destino:</strong> ${cidadeDestino} - ${ufDestino}</li>
-      <li><strong>Rota:</strong> Rota ${rota}</li>
-      <li><strong>Valor da NF:</strong> ${formatBRL(valorNF)}</li>
-      <li><strong>Peso informado:</strong> ${pesoKg.toFixed(2)} kg</li>
-      <li><strong>Peso faturado:</strong> ${pesoFaturadoKg.toFixed(2)} kg (mínimo ${PESO_MIN_KG} kg)</li>
-      <li><strong>Tarifa da rota:</strong> ${formatBRL(tarifaTon)} / tonelada</li>
-    </ul>
-
-    <h3>Composição do frete (Fracionado)</h3>
-    <table class="tabela-frete">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Base de cálculo</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Frete peso</td>
-          <td>${pesoTon.toFixed(3)} t × ${formatBRL(tarifaTon)} / t</td>
-          <td>${formatBRL(fretePeso)}</td>
-        </tr>
-        <tr>
-          <td>Frete valor (0,20% da NF)</td>
-          <td>0,20% × ${formatBRL(valorNF)}</td>
-          <td>${formatBRL(freteValor)}</td>
-        </tr>
-        <tr>
-          <td>Taxa de despacho</td>
-          <td>Valor fixo</td>
-          <td>${formatBRL(despacho)}</td>
-        </tr>
-        <tr>
-          <td>ICMS (${(ALIQUOTA_ICMS * 100).toFixed(0)}% por dentro)</td>
-          <td>Aplicado sobre o valor do serviço</td>
-          <td>${formatBRL(icms)}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="2">Total do serviço (com ICMS)</th>
-          <th>${formatBRL(totalComICMS)}</th>
-        </tr>
-      </tfoot>
-    </table>
-  `;
+function estimarPrazo(rota, modalidade) {
+    if (modalidade === 'dedicado') return "Imediato / Agendado";
+    if (rota === "I") return "2 a 3 dias úteis";
+    if (rota === "II") return "3 a 5 dias úteis";
+    return "Sob consulta";
 }
 
-// ================== CÁLCULO DEDICADO (LOTACAO) ==================
+// =====================================================================
+// FUNÇÃO PRINCIPAL EXPORTADA (USADA PELO GERENCIADOR)
+// =====================================================================
 
-function calcularDedicado(params, container) {
-  const valorNF = parseValorBR(params.get("valor_nf"));
-  const pesoKg = parseFloat(params.get("peso") || "0");
-  const cidadeDestino = params.get("cidade_destino") || "";
-  const ufDestino = (params.get("uf_destino") || "").toUpperCase();
-  const cidadeOrigem = params.get("cidade_origem") || "";
-  const ufOrigem = (params.get("uf_origem") || "").toUpperCase();
+function calcularLevanteModulo(cidadeDestino, pesoKg, valorNF) {
+    // 1. Tenta identificar Rota Fracionada
+    let rota = descobrirRotaFracionado(cidadeDestino);
+    
+    // IMPORTANTE: Definindo Origem Padrão para busca na tabela de Dedicados
+    // Como o sistema novo só passa destino, assumimos MAUA-SP como origem padrão para tentar achar na tabela
+    // Se precisar de outra origem, precisará ajustar o input do sistema.
+    const origemPadrao = "MAUA";
+    const ufOrigemPadrao = "SP";
+    const ufDestinoPadrao = "SP"; // Assumindo SP se não informado, ou precisaria passar no parametro
 
-  let rotaObj = encontrarRotaDedicado(cidadeOrigem, ufOrigem, cidadeDestino, ufDestino);
+    // --- CÁLCULO FRACIONADO ---
+    let resultadoFracionado = null;
+    
+    if (rota) {
+        const tarifaTon = TARIFA_POR_ROTA[rota];
+        const pesoFaturadoKg = Math.max(pesoKg, PESO_MIN_KG);
+        const pesoTon = pesoFaturadoKg / 1000;
 
-  // Se não achou linha específica, aplica Forma 1: rota por cidade (I/II)
-  if (!rotaObj) {
-    const rotaFr = descobrirRotaFracionado(cidadeDestino); // I ou II (II por padrão)
-    const padrao = DEDICADO_PADRAO_ROTA[rotaFr];
-    const pedagioPorEixoPadrao = DEDICADO_PADRAO_PEDAGIO_POR_EIXO[rotaFr];
-
-    if (!padrao) {
-      container.innerHTML = `
-        <h2>Rota dedicada não configurada</h2>
-        <p>Não foi possível encontrar tarifa padrão para a rota da cidade <strong>${cidadeDestino}</strong>.</p>
-      `;
-      return;
+        const fretePesoFrac = pesoTon * tarifaTon;
+        const freteValorFrac = valorNF * AD_VALOREM_FRAC;
+        const despachoFrac = TAXA_DESPACHO;
+        const subtotalFrac = fretePesoFrac + freteValorFrac + despachoFrac;
+        const totalFrac = subtotalFrac / (1 - ALIQUOTA_ICMS);
+        
+        resultadoFracionado = {
+            fretePeso: fretePesoFrac,
+            freteValor: freteValorFrac,
+            despacho: despachoFrac,
+            icms: totalFrac - subtotalFrac,
+            total: totalFrac,
+            prazo: estimarPrazo(rota, 'fracionado')
+        };
     }
 
-    rotaObj = {
-      origemCidade: normalizarTexto(cidadeOrigem),
-      origemUF: ufOrigem,
-      destinoCidade: normalizarTexto(cidadeDestino),
-      destinoUF: ufDestino,
-      carreta: padrao.carreta,
-      truck: padrao.truck,
-      toco: padrao.toco,
-      f4000: padrao.f4000,
-      f1000: padrao.f1000,
-      pedagioPorEixo: pedagioPorEixoPadrao
+    // --- CÁLCULO DEDICADO ---
+    let resultadoDedicado = null;
+
+    // 1. Tenta achar rota específica na tabela gigante (DEDICADO_ROTAS)
+    let rotaObj = encontrarRotaDedicado(origemPadrao, ufOrigemPadrao, cidadeDestino, ufDestinoPadrao);
+
+    // 2. Se não achou específica, tenta fallback por Rota I ou II
+    if (!rotaObj && rota) {
+        const padrao = DEDICADO_PADRAO_ROTA[rota];
+        const pedagioPorEixoPadrao = DEDICADO_PADRAO_PEDAGIO_POR_EIXO[rota];
+        if (padrao) {
+            rotaObj = {
+                carreta: padrao.carreta,
+                truck: padrao.truck,
+                toco: padrao.toco,
+                f4000: padrao.f4000,
+                f1000: padrao.f1000,
+                pedagioPorEixo: pedagioPorEixoPadrao
+            };
+        }
+    }
+
+    // Se conseguiu definir uma rota dedicada (Específica ou Padrão)
+    if (rotaObj) {
+        const veiculo = escolherVeiculoPorPeso(pesoKg, rotaObj);
+        
+        if (veiculo) {
+            const valorVeiculo = veiculo.valor;
+            const pedagioTotal = rotaObj.pedagioPorEixo * veiculo.eixos;
+            const freteValorDed = valorNF * AD_VALOREM_DED;
+            const subtotalDed = valorVeiculo + pedagioTotal + freteValorDed + CAT_DED;
+            const totalDed = subtotalDed / (1 - ALIQUOTA_ICMS);
+
+            resultadoDedicado = {
+                fretePeso: valorVeiculo + pedagioTotal, 
+                freteValor: freteValorDed,
+                despacho: CAT_DED,
+                icms: totalDed - subtotalDed,
+                total: totalDed,
+                prazo: estimarPrazo(rota || "II", 'dedicado')
+            };
+        }
+    }
+
+    // Se não atende nem fracionado nem dedicado, retorna null
+    if (!resultadoFracionado && !resultadoDedicado) return null;
+
+    return {
+        nome: "Levante Logística",
+        fracionado: resultadoFracionado, // Pode ser null se não atender fracionado
+        dedicado: resultadoDedicado      // Pode ser null se não atender dedicado
     };
-  }
-
-  const veiculo = escolherVeiculoPorPeso(pesoKg, rotaObj);
-
-  if (!veiculo) {
-    container.innerHTML = `
-      <h2>Sem veículo disponível para este peso</h2>
-      <p>Para a rota <strong>${cidadeOrigem} - ${ufOrigem}</strong> →
-      <strong>${cidadeDestino} - ${ufDestino}</strong> não há veículo configurado para o peso de
-      <strong>${pesoKg.toFixed(2)} kg</strong>.</p>
-      <p>Confira a faixa de peso e os valores de Carreta, Truck, Toco, F4000, F1000 na tabela dedicada.</p>
-    `;
-    return;
-  }
-
-  const valorVeiculo = veiculo.valor;
-  const pedagioTotal = rotaObj.pedagioPorEixo * veiculo.eixos;
-  const freteValor = valorNF * AD_VALOREM_DED;
-  const cat = CAT_DED;
-
-  const subtotal = valorVeiculo + pedagioTotal + freteValor + cat;
-
-  // ICMS "por dentro"
-  const totalComICMS = subtotal / (1 - ALIQUOTA_ICMS);
-  const icms = totalComICMS - subtotal;
-
-  const nomeVeiculoMap = {
-    carreta: "Carreta (5 eixos)",
-    truck: "Truck (3 eixos)",
-    toco: "Toco (2 eixos)",
-    f4000: "F4000 (2 eixos)",
-    f1000: "F1000 (2 eixos)"
-  };
-
-  container.innerHTML = `
-    <h2>Resultado da Simulação - Levante (J&amp;J) - Dedicado</h2>
-
-    <h3>Dados principais</h3>
-    <ul>
-      <li><strong>Origem:</strong> ${cidadeOrigem} - ${ufOrigem}</li>
-      <li><strong>Destino:</strong> ${cidadeDestino} - ${ufDestino}</li>
-      <li><strong>Peso informado:</strong> ${pesoKg.toFixed(2)} kg</li>
-      <li><strong>Veículo selecionado:</strong> ${nomeVeiculoMap[veiculo.tipo] || veiculo.tipo}</li>
-      <li><strong>Valor do veículo (tabela):</strong> ${formatBRL(valorVeiculo)}</li>
-      <li><strong>Pedágio por eixo:</strong> ${formatBRL(rotaObj.pedagioPorEixo)} (× ${veiculo.eixos} eixos)</li>
-      <li><strong>Valor da NF:</strong> ${formatBRL(valorNF)}</li>
-    </ul>
-
-    <h3>Composição do frete (Dedicado)</h3>
-    <table class="tabela-frete">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Base de cálculo</th>
-          <th>Valor</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Frete veículo</td>
-          <td>${nomeVeiculoMap[veiculo.tipo] || veiculo.tipo}</td>
-          <td>${formatBRL(valorVeiculo)}</td>
-        </tr>
-        <tr>
-          <td>Pedágio total</td>
-          <td>${formatBRL(rotaObj.pedagioPorEixo)} × ${veiculo.eixos} eixos</td>
-          <td>${formatBRL(pedagioTotal)}</td>
-        </tr>
-        <tr>
-          <td>Frete valor (0,20% da NF)</td>
-          <td>0,20% × ${formatBRL(valorNF)}</td>
-          <td>${formatBRL(freteValor)}</td>
-        </tr>
-        <tr>
-          <td>CAT</td>
-          <td>Valor fixo</td>
-          <td>${formatBRL(cat)}</td>
-        </tr>
-        <tr>
-          <td>ICMS (${(ALIQUOTA_ICMS * 100).toFixed(0)}% por dentro)</td>
-          <td>Aplicado sobre o valor do serviço</td>
-          <td>${formatBRL(icms)}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="2">Total do serviço (com ICMS)</th>
-          <th>${formatBRL(totalComICMS)}</th>
-        </tr>
-      </tfoot>
-    </table>
-  `;
 }
-
-// ================== ENTRADA PRINCIPAL ==================
-
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const modalidade = params.get("modalidade") || "fracionado";
-  const container = document.getElementById("resultado-frete");
-  if (!container) return;
-
-  if (modalidade === "lotacao") {
-    calcularDedicado(params, container);
-  } else {
-    calcularFracionado(params, container);
-  }
-});

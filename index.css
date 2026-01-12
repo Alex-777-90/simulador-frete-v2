@@ -1,66 +1,120 @@
+/* ============================================================
+   ARQUIVO: index.css (TEMA CORPORATE LIGHT - NEXO STYLE)
+   ============================================================ */
+
 :root {
-  --bg: #1a2333;
-  --card-bg: #334463;
-  --input-bg: #0f172a;
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --agro-green: #10b981;
-  --border: #475569;
+  /* PALETA CORPORATIVA / CLARA (Baseada na imagem) */
+  --bg-page: #f4f6f9;        /* Fundo da página cinza muito claro */
+  --bg-card: #ffffff;        /* Cards brancos */
+  --bg-element: #ffffff;     /* Inputs brancos */
+  --bg-hover: #e9ecef;       /* Hover suave em linhas/botões */
+
+  --text-primary: #333333;   /* Texto principal quase preto */
+  --text-secondary: #555555; /* Texto secundário cinza médio */
   
-  /* LARGURAS DAS COLUNAS FIXAS (Ajuste aqui se precisar) */
-  --w-col1: 160px; /* CNPJ */
-  --w-col2: 250px; /* Nome */
-  --w-col3: 180px; /* Cidade */
+  --border-color: #ced4da;   /* Bordas padrão (estilo Bootstrap) */
+  
+  /* CORES DA TABELA (Baseadas na imagem) */
+  --header-blue-dark: #004080;   /* Azul Escuro (Colunas fixas/info) */
+  --header-blue-light: #0066cc;  /* Azul Médio (Meses) */
+  --header-orange: #ff9900;      /* Laranja (Total) */
+  --cell-input-green: #b3ffb3;   /* Verde claro para células editáveis */
+  --cell-input-green-hover: #99e699;
+
+  /* BOTÕES E DESTAQUES */
+  --btn-primary: #0d6efd;    /* Azul padrão botões */
+  --btn-danger: #dc3545;     /* Vermelho limpar */
+  --btn-success: #198754;    /* Verde adicionar */
+
+  /* DIMENSÕES TABELA (Mantidas do original) */
+  --col-w-cnpj: 160px;
+  --col-w-nome: 250px;
+  --col-w-cidade: 180px;
 }
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: var(--bg);
-  color: var(--text);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
   min-height: 100vh;
 }
 
+a { text-decoration: none; }
+
+/* --- HEADER SUPERIOR (BARRA ESCURA) --- */
 .topbar {
-  background: #0f172a;
-  padding: 1.5rem;
+  background-color: #2c2c2c; /* Mantém o topo escuro como na imagem "NEXO" */
+  padding: 1rem 1.5rem;
   text-align: center;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 4px solid var(--header-orange); /* Detalhe laranja */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.topbar h1 { margin: 0; color: var(--agro-green); }
-.topbar p { margin: 5px 0 15px; color: var(--muted); }
+
+.topbar h1 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.topbar p {
+  margin: 5px 0 0;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
 
 .btn-voltar {
-  color: var(--text);
-  text-decoration: none;
-  font-size: 0.9rem;
-  border: 1px solid var(--border);
-  padding: 5px 10px;
-  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 6px 15px;
+  border-radius: 4px;
+  font-size: 0.85rem;
   transition: 0.2s;
+  background: rgba(255,255,255,0.1);
 }
-.btn-voltar:hover { background: var(--border); }
+.btn-voltar:hover {
+  background-color: rgba(255,255,255,0.2);
+}
 
-main { padding: 20px; display: flex; justify-content: center; }
-
-.card {
-  width: 100%;
-  max-width: 95vw; /* Ocupa quase a tela toda */
-  background: var(--card-bg);
+/* --- CONTAINER PRINCIPAL --- */
+main {
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  max-width: 1600px; /* Aumentado para caber a tabela larga */
+  margin: 0 auto;
 }
 
-/* --- FORMULÁRIO --- */
+/* --- CARD PADRÃO (BRANCO) --- */
+.card {
+  background-color: var(--bg-card);
+  padding: 25px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* Sombra suave */
+  margin-bottom: 30px;
+}
+
+/* --- FILTROS E FORMULÁRIO --- */
 fieldset {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 15px;
-  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #fff;
   margin-bottom: 20px;
 }
-legend { color: var(--agro-green); font-weight: bold; padding: 0 5px; }
+
+legend {
+  color: var(--text-primary);
+  font-weight: 700;
+  padding: 0 10px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
 
 .field-group {
   display: flex;
@@ -68,223 +122,364 @@ legend { color: var(--agro-green); font-weight: bold; padding: 0 5px; }
   gap: 15px;
   align-items: flex-end;
 }
-.field { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 150px; }
-label { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
 
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 180px;
+}
+
+label {
+  font-size: 0.8rem;
+  color: var(--text-primary);
+  font-weight: 700; /* Labels em negrito como na imagem */
+}
+
+/* INPUTS (BRANCO COM BORDA CINZA) */
 input, select {
-  background: var(--input-bg);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 10px;
-  border-radius: 6px;
+  background-color: var(--bg-element);
+  border: 1px solid #ccc;
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: 4px;
   outline: none;
-  width: 100%;
-  box-sizing: border-box;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
 }
+
 input:focus, select:focus {
-  border-color: var(--agro-green);
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  border-color: var(--header-blue-light);
+  box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
 }
 
-.actions-center { margin-top: 20px; text-align: center; width: 100%; }
-button#btn-calcular-lote {
-  background: var(--agro-green);
-  color: #064e3b;
-  border: none;
-  padding: 12px 30px;
-  border-radius: 8px;
-  font-weight: bold;
+/* --- BOTÕES DE AÇÃO --- */
+.actions-center {
+  margin-top: 25px;
+  text-align: left; /* Alinhado com os inputs */
+  display: flex;
+  gap: 10px;
+}
+
+/* Estilo genérico para botões */
+button {
   cursor: pointer;
-  font-size: 1rem;
-  transition: transform 0.2s;
-}
-button#btn-calcular-lote:hover { transform: scale(1.02); filter: brightness(1.1); }
-
-/* --- TABELA COMPLEXA (STICKY) --- */
-.resultado-container {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: #1e293b;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid transparent;
+  transition: all 0.2s;
 }
 
+/* Botão Calcular/Aplicar (Azul) */
+button#btn-calcular-lote, .btn-primary {
+  background-color: #fff;
+  color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+button#btn-calcular-lote:hover, .btn-primary:hover {
+  background-color: var(--btn-primary);
+  color: #fff;
+}
+
+/* Botão Verde (+ Adicionar) - Se houver classe */
+.btn-add {
+  background-color: #fff;
+  color: var(--btn-success);
+  border-color: var(--btn-success);
+}
+.btn-add:hover {
+  background-color: var(--btn-success);
+  color: #fff;
+}
+
+/* Botão Vermelho (Limpar) - Se houver classe */
+.btn-clear {
+  background-color: #fff;
+  color: var(--btn-danger);
+  border-color: var(--btn-danger);
+}
+.btn-clear:hover {
+  background-color: var(--btn-danger);
+  color: #fff;
+}
+
+/* --- AUTOCOMPLETE --- */
+.autocomplete-container { position: relative; width: 100%; }
+.input-wrapper { position: relative; width: 100%; }
+#cliente-input { padding-right: 35px; }
+
+.btn-dropdown-arrow {
+  position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: #666; cursor: pointer; font-size: 0.8rem;
+}
+
+.sugestoes-lista {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background-color: #fff;
+  border: 1px solid var(--border-color);
+  border-radius: 0 0 4px 4px;
+  max-height: 300px; overflow-y: auto; z-index: 1000;
+  list-style: none; padding: 0; margin: 0; display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.sugestoes-lista.ativo { display: block; }
+
+.sugestoes-lista li {
+  padding: 10px; cursor: pointer; color: var(--text-primary);
+  border-bottom: 1px solid #eee; font-size: 0.9rem;
+}
+.sugestoes-lista li:hover {
+  background-color: var(--bg-hover);
+}
+
+/* ============================================================
+   TABELA (ESTILO FORECAST - AZUL/LARANJA)
+   ============================================================ */
 .table-wrapper {
-  max-height: 600px; /* Altura máxima da tabela (rolagem vertical) */
-  overflow: auto; /* Habilita rolagem X e Y */
-  position: relative;
+  max-height: 600px; overflow: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 table {
-  width: max-content; /* Força a tabela a ter a largura do conteúdo, ativando scroll horizontal */
-  border-collapse: separate; /* Necessário para sticky funcionar bem com bordas */
-  border-spacing: 0;
+  width: 100%; 
+  border-collapse: separate;
+  border-spacing: 0; 
   font-size: 0.85rem;
 }
 
-/* CABEÇALHO FIXO (VERTICAL) */
+/* HEADER GERAL (AZUL MÉDIO por padrão) */
 thead th {
-  position: sticky;
-  top: 0;
-  background: #0f172a; /* Cor de fundo do cabeçalho */
-  color: var(--agro-green);
-  padding: 12px;
-  border-bottom: 2px solid var(--agro-green);
-  z-index: 20; /* Fica acima do conteúdo */
+  position: sticky; top: 0;
+  background-color: var(--header-blue-light); /* Azul padrão */
+  color: #fff;
+  padding: 10px 8px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 2px solid #fff;
+  z-index: 20;
   text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.8rem;
 }
 
-/* CÉLULAS DO CORPO */
-tbody td {
-  padding: 10px 12px;
-  border-bottom: 1px solid #334463;
-  color: #e2e8f0;
-  background: #1e293b; /* Fundo padrão das células */
-  white-space: nowrap; /* Evita quebra de linha para manter alinhamento */
-}
+/* LÓGICA DE CORES DO HEADER (Tentativa de simular a imagem) */
 
-/* --- LÓGICA DAS 3 COLUNAS FIXAS (HORIZONTAL) --- */
-
-/* Coluna 1: CNPJ */
-.col-fix-1, tbody td:nth-child(1) {
-  position: sticky;
-  left: 0;
-  width: var(--w-col1);
-  min-width: var(--w-col1);
-  max-width: var(--w-col1);
-  z-index: 10;
-  background: #1e293b; /* Importante ter fundo para não ficar transparente */
-  border-right: 1px solid #475569;
-}
-/* Cabeçalho da Col 1 (precisa de z-index maior para ficar sobre a col fixa ao rolar vertical) */
-thead th.col-fix-1 {
-  z-index: 30;
-  background: #0f172a;
-}
-
-/* Coluna 2: Nome do Cliente */
-.col-fix-2, tbody td:nth-child(2) {
-  position: sticky;
-  left: var(--w-col1); /* Cola logo após a coluna 1 */
-  width: var(--w-col2);
-  min-width: var(--w-col2);
-  max-width: var(--w-col2);
-  z-index: 10;
-  background: #1e293b;
-  border-right: 1px solid #475569;
-  
-  /* Truncar texto longo com ... */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-thead th.col-fix-2 {
-  z-index: 30;
-  background: #0f172a;
-}
-
-/* Coluna 3: Cidade/UF */
-.col-fix-3, tbody td:nth-child(3) {
-  position: sticky;
-  /* Soma das larguras das colunas anteriores (160 + 250) */
-  left: calc(var(--w-col1) + var(--w-col2)); 
-  width: var(--w-col3);
-  min-width: var(--w-col3);
-  max-width: var(--w-col3);
-  z-index: 10;
-  background: #1e293b;
-  border-right: 2px solid var(--agro-green); /* Borda destaque onde acaba o fixo */
-}
+/* Colunas fixas à esquerda (Info) -> Azul Mais Escuro */
+thead th.col-fix-1, 
+thead th.col-fix-2, 
 thead th.col-fix-3 {
-  z-index: 30;
-  background: #0f172a;
-  border-right: 2px solid var(--agro-green);
+  background-color: var(--header-blue-dark) !important;
 }
 
-/* Efeito Hover na linha (precisa forçar a cor nas células fixas também) */
-tbody tr:hover td {
-  background-color: #2d3b52;
+/* Última coluna (Total) -> Laranja */
+thead th:last-child {
+  background-color: var(--header-orange) !important;
+  font-size: 0.9rem;
 }
 
-/* Diferenciar Transportadora 1 e 2 visualmente */
-.th-group-1 { background: rgba(16, 185, 129, 0.1) !important; color: #fff; }
-.th-group-2 { background: rgba(59, 130, 246, 0.1) !important; color: #94a3b8; }
-
-/* Container para posicionamento relativo */
-.autocomplete-container {
-  position: relative;
+/* CORPO DA TABELA */
+tbody td {
+  background-color: #fff;
+  color: #333;
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+  border-right: 1px solid #f0f0f0;
+  white-space: nowrap;
+  vertical-align: middle;
 }
 
-/* Container relativo para posicionar a lista e o botão */
-.autocomplete-container {
-  position: relative;
+/* Zebra Striping (Opcional, para leitura) */
+tbody tr:nth-child(even) td {
+  background-color: #fcfcfc;
 }
 
-/* Wrapper para alinhar input e botão */
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+/* Hover na linha */
+tbody tr:hover td { 
+  background-color: #e6f0ff !important; /* Azul bem clarinho no hover */
+  color: #000; 
 }
 
-/* Ajuste no Input para dar espaço ao botão na direita */
-#cliente-input {
-  width: 100%;
-  padding-right: 40px; /* Espaço para a setinha */
-  box-sizing: border-box;
+/* CÉLULAS COM INPUT/EDITÁVEIS (Verde) 
+   Nota: Aplique a classe .editable ou style="background-color..." no HTML se possível.
+   Como é CSS puro, vou estilizar inputs dentro da tabela se houverem.
+*/
+tbody td input {
+    background-color: var(--cell-input-green);
+    border: 1px solid #88cc88;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+}
+tbody td input:focus {
+    background-color: #fff;
+    border-color: var(--header-blue-light);
 }
 
-/* Estilo do Botão Seta */
-.btn-dropdown-arrow {
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  color: #3da9ff; /* Azul do tema */
-  cursor: pointer;
-  font-size: 12px;
-  padding: 5px 10px;
-  outline: none;
-  transition: transform 0.2s;
+/* Simulação visual caso o valor seja apenas texto com fundo verde (como na imagem '500') */
+.cell-green {
+    background-color: var(--cell-input-green) !important;
+    color: #000 !important;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid #a3e4a3;
 }
 
-/* (Opcional) Girar a seta quando a lista estiver aberta */
-.autocomplete-container.open .btn-dropdown-arrow {
-  transform: translateY(-50%) rotate(180deg);
+
+/* --- COLUNAS FIXAS (Sticky) --- */
+/* É crucial que o background seja definido explicitamente para não ficar transparente ao rolar */
+
+.col-fix-1, tbody td:nth-child(1) {
+  position: sticky; left: 0; z-index: 10;
+  width: var(--col-w-cnpj); min-width: var(--col-w-cnpj); max-width: var(--col-w-cnpj);
+  border-right: 2px solid #ddd;
 }
 
-/* O resto do CSS da lista (.sugestoes-lista) permanece igual ao anterior */
-.sugestoes-lista {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #1d2a3b;
-  border: 1px solid #3da9ff;
-  border-radius: 0 0 8px 8px;
-  max-height: 250px;
-  overflow-y: auto;
-  z-index: 1000;
-  list-style: none;
-  padding: 0;
+.col-fix-2, tbody td:nth-child(2) {
+  position: sticky; left: var(--col-w-cnpj); z-index: 10;
+  width: var(--col-w-nome); min-width: var(--col-w-nome); max-width: var(--col-w-nome);
+  border-right: 2px solid #ddd;
+  overflow: hidden; text-overflow: ellipsis;
+}
+
+.col-fix-3, tbody td:nth-child(3) {
+  position: sticky; left: calc(var(--col-w-cnpj) + var(--col-w-nome)); z-index: 10;
+  width: var(--col-w-cidade); min-width: var(--col-w-cidade); max-width: var(--col-w-cidade);
+  border-right: 2px solid #aaa; /* Divisória mais forte separando fixas das roláveis */
+}
+
+/* No corpo, as colunas fixas também precisam ser branca/cinza no scroll */
+tbody td:nth-child(1),
+tbody td:nth-child(2),
+tbody td:nth-child(3) {
+    background-color: #f9f9f9; /* Um pouco diferente para destacar que é fixo */
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+
+/* ============================================================
+   SIMULADOR DE FRETE (ADAPTADO PARA CLARO)
+   ============================================================ */
+.resultado-container {
+  margin-top: 40px;
+  display: flex; flex-direction: column; gap: 20px;
+}
+
+/* CARD TRANSPORTADORA */
+.card-transportadora {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  border-left: 5px solid var(--header-blue-light); /* Identificador Azul */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Header Transportadora */
+.card-header {
+  background-color: #f1f1f1;
+  padding: 12px 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.card-header h3 {
   margin: 0;
-  display: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  color: #333;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
-.sugestoes-lista.ativo {
-  display: block;
+/* Body */
+.card-body {
+  display: flex; flex-wrap: wrap;
+  background-color: #fff;
 }
 
-.sugestoes-lista li {
-  padding: 10px;
-  cursor: pointer;
-  color: #f1f5f9;
-  border-bottom: 1px solid #334463;
+/* Colunas Internas */
+.coluna-modalidade {
+  flex: 1; min-width: 300px; padding: 20px;
+  border-right: 1px solid #eee;
 }
-.sugestoes-lista li:hover {
-  background-color: #38bdf8;
-  color: #0f172a;
+.coluna-modalidade:last-child { border-right: none; }
+
+.coluna-modalidade h4 {
+  margin-top: 0;
+  color: var(--header-blue-dark);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px; margin-bottom: 15px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.9rem; text-transform: uppercase;
+}
+
+/* Badge Prazo */
+.coluna-modalidade h4 small {
+  background-color: #e9ecef;
+  color: #555;
+  padding: 3px 8px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  border: 1px solid #ccc;
+  font-weight: normal;
+}
+
+/* Tabela de Valores Interna */
+.tabela-custos {
+  width: 100%; border-collapse: collapse; font-size: 0.9rem;
+}
+
+.tabela-custos td {
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+  color: #666;
+}
+
+.tabela-custos td.valor {
+  text-align: right;
+  color: #333;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Total Row */
+.tabela-custos tr.total-row td {
+  border-top: 2px solid #ddd;
+  border-bottom: none;
+  padding-top: 15px;
+  color: var(--header-blue-dark);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+/* Inativo */
+.coluna-modalidade.inativo {
+  background-color: #f9f9f9;
+  color: #aaa;
+  opacity: 0.8;
+}
+
+.msg-erro {
+  color: var(--btn-danger);
+  font-style: italic; font-size: 0.85rem; margin-top: 10px;
+}
+
+.aviso-vazio {
+  text-align: center; padding: 30px;
+  background-color: #f9f9f9;
+  border: 1px dashed #ccc;
+  color: #777; border-radius: 4px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .card-body { flex-direction: column; }
+  .coluna-modalidade { border-right: none; border-bottom: 1px solid #eee; }
+  .actions-center { flex-direction: column; }
 }
